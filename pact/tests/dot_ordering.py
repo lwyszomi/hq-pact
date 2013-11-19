@@ -128,7 +128,7 @@ class dotsOrderingTests(TestCase):
     def _submitAndVerifyBundle(self, bundle, verify=True):
         start_nums = len(self.case.xform_ids)
         submit_xform(self.submit_url, self.domain.name, bundle['xml'])
-        time.sleep(1)
+        time.sleep(3)
         submitted = XFormInstance.get(bundle['xform_id'])
         self.assertTrue(hasattr(submitted, PACT_DOTS_DATA_PROPERTY))
 

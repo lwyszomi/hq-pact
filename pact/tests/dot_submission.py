@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-import pdb
 import dateutil
 import os
 from django.test import TestCase
@@ -13,6 +12,7 @@ from pact.enums import PACT_DOTS_DATA_PROPERTY, PACT_DOMAIN, XMLNS_DOTS_FORM, XM
 from pact.models import PactPatientCase
 from pact.regimen import regimen_dict_from_choice
 from pact.utils import submit_xform
+import time
 
 NO_PILLBOX_ID = "83bfe01c-9f96-4e25-a1ad-f8164defa5d1"
 START_DATE = datetime.strptime("2012-11-17", "%Y-%m-%d")
@@ -263,6 +263,7 @@ class dotsSubmissionTests(TestCase):
         self.testSignal()
         observations = query_observations(CASE_ID, START_DATE, END_DATE)
         td = END_DATE - START_DATE
+        time.sleep(3)
 
         def check_obs_props(obs, props):
             for k, v in props.items():
